@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+      <title>Timestamp Microservice | Gaus Technologies</title>
+      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="style.css" rel="stylesheet" type="text/css">
+   </head>
+
+   <body>
+<div class="container">
+      <h1>Timestamp Microservice</h1>  
+    <form action="POST" id="myForm">
+      <h3>Enter date in UNIX or UTC to see the conversion</h3>
+      <label for="time">Input Time/Date</label><br><br>
+      <input type="datetime" required placeholder="enter date" id="date-input"><br><br><br> 
+      <button type="submit" id="btn">Convert</button>
+    </form>
+</div>
+<script>
+const btn = document.getElementById("btn");
+const form = document.getElementById("myForm")
+form.addEventListener("submit", (event) => {
+  const dateInput = document.getElementById("date-input").value;
+  event.preventDefault();
+  window.location.href = `/api/${dateInput}`
+})
+</script>
+  </body>
+</html>
