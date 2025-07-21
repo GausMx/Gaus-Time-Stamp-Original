@@ -11,10 +11,10 @@
    <body>
 <div class="container">
       <h1>Timestamp Microservice</h1>  
-    <form action="POST" id="myForm">
+    <form action="timestamp" id="myForm" method="get">
       <h3>Enter date in UNIX or UTC to see the conversion</h3>
       <label for="time">Input Time/Date</label><br><br>
-      <input type="datetime" required placeholder="enter date" id="date-input"><br><br><br> 
+      <input type="datetime" placeholder="enter date" id="date-input"><br><br><br> 
       <button type="submit" id="btn">Convert</button>
     </form>
 </div>
@@ -23,8 +23,14 @@ const btn = document.getElementById("btn");
 const form = document.getElementById("myForm")
 form.addEventListener("submit", (event) => {
   const dateInput = document.getElementById("date-input").value;
+  const nowDate = new Date();
   event.preventDefault();
-  window.location.href = `/api/${dateInput}`
+  if (dateInput) {
+    window.location.href = `/api/${dateInput}`;
+  }
+  else {
+    window.location.href = `/api/${nowDate}`
+  }
 })
 </script>
   </body>
