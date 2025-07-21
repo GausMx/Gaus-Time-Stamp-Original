@@ -30,9 +30,6 @@ app.get("/api/what", function (req, res) {
 //The timestamp api endpoint
 app.get("/api/:date", (req, res) => {
   let dateStr = req.params.date;
-  if (!dateStr) {
-    dateStr = new Date().toISOString;
-  } 
   let date;
   if (!isNaN(dateStr) && dateStr.toString().length === 13) {
     date = new Date(parseInt(dateStr));
@@ -41,7 +38,7 @@ app.get("/api/:date", (req, res) => {
     date = new Date(dateStr);
   }
   if (isNaN(date.getTime())) {
-    res.json({error: "Invalid Date"});
+    return res.json({error: "Invalid Date"});
   }
   res.json({
     unix: date.getTime(),
